@@ -34,7 +34,7 @@
             line-height: 1.6;
         }
 
-        /* Fixed Navigation Bar */
+        /* Navigation with More Height */
         .nav {
             position: fixed;
             top: 0;
@@ -44,17 +44,20 @@
             background: rgba(15, 23, 42, 0.9);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(125, 211, 252, 0.1);
-            padding: 20px;
+            padding: 30px 20px; /* Increased padding */
+            height: 120px; /* Fixed height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .nav-logo {
-            display: block;
-            text-align: center;
             font-size: 24px;
             font-weight: 700;
             color: white;
             text-decoration: none;
-            margin-bottom: 10px;
+            margin-bottom: 15px; /* Increased spacing */
         }
 
         .nav-links {
@@ -106,10 +109,10 @@
             transform: rotate(45deg) translateX(100%);
         }
 
-        /* Hero Section with Fixed Spacing */
+        /* Hero Section with Much More Space */
         .hero {
             min-height: 100vh;
-            padding-top: 150px; /* Increased padding to prevent overlap */
+            padding-top: 200px; /* Significantly increased padding */
             position: relative;
             background: linear-gradient(
                 135deg,
@@ -122,6 +125,9 @@
             );
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         @keyframes gradientBG {
@@ -130,45 +136,47 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Hero Content with Clear Spacing */
+        /* Centered Hero Content */
         .hero-content {
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
             text-align: center;
-            position: relative;
-            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px; /* Consistent spacing between elements */
         }
 
-        /* Main Title with Clear Spacing */
+        /* Main Title with More Space */
         .main-title {
             font-family: 'Space Grotesk', sans-serif;
             font-size: 82px;
             font-weight: 700;
-            margin: 40px 0 30px 0;
+            margin: 0 0 30px 0;
             background: linear-gradient(135deg, #fff, var(--light-blue));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 0 0 30px rgba(125, 211, 252, 0.3);
-            position: relative;
-            z-index: 2;
+            line-height: 1.2;
         }
 
-        /* Tagline Spacing */
+        /* Centered Taglines */
         .tagline {
-            font-size: 24px;
-            margin: 0 auto 20px;
+            font-size: 28px; /* Increased size */
+            margin: 0 auto 15px;
             max-width: 800px;
             color: rgba(255, 255, 255, 0.9);
+            line-height: 1.4;
         }
 
-        /* Sub-tagline Spacing */
         .sub-tagline {
-            font-size: 18px;
+            font-size: 20px; /* Increased size */
             margin: 0 auto 40px;
             max-width: 600px;
             color: rgba(255, 255, 255, 0.7);
+            line-height: 1.4;
         }
 
         /* Floating Icons Layer */
@@ -182,19 +190,23 @@
             z-index: 1;
         }
 
-        /* Sections */
+        /* Main Content Section */
+        .main-section {
+            padding: 100px 0; /* Increased padding */
+            margin-top: 50px;
+        }
+
+        /* Ensure proper spacing for all sections */
         .section {
-            padding: 100px 20px;
+            padding: 120px 0; /* Increased section padding */
+            margin: 0;
             position: relative;
-            overflow: hidden;
         }
 
         .section-content {
             max-width: 1200px;
             margin: 0 auto;
-            position: relative;
-            z-index: 2;
-            padding: 0 20px;
+            padding: 0 30px; /* Increased horizontal padding */
         }
 
         .section-title {
