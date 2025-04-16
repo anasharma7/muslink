@@ -9,11 +9,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
     <style>
         :root {
-            --primary-blue: #1e3a8a;
-            --secondary-blue: #1e40af;
-            --accent-blue: #3b82f6;
+            --primary-blue: #2563eb;
+            --secondary-blue: #3b82f6;
+            --accent-blue: #60a5fa;
             --light-blue: #93c5fd;
-            --text-dark: #1f2937;
             --text-light: #f3f4f6;
         }
 
@@ -31,17 +30,18 @@
             line-height: 1.6;
         }
 
-        /* Refined Hero Section */
+        /* Enhanced Hero Section with Lighter Blues */
         .hero {
             min-height: 100vh;
             position: relative;
             overflow: hidden;
             padding-top: 80px;
-            background: linear-gradient(135deg, 
-                var(--primary-blue),
-                var(--secondary-blue),
-                var(--accent-blue));
-            background-size: 200% 200%;
+            background: linear-gradient(-45deg, 
+                #60a5fa,
+                #3b82f6,
+                #2563eb,
+                #4f46e5);
+            background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
         }
 
@@ -51,23 +51,55 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Professional Spotlight Title */
-        .title-container {
-            position: relative;
-            margin-bottom: 40px;
+        /* Floating Elements */
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
         }
 
+        .floating-element {
+            position: absolute;
+            font-size: 24px;
+            opacity: 0;
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(-50%);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100px) translateX(50%);
+                opacity: 0;
+            }
+        }
+
+        /* Professional but Visible Title */
         h1 {
             font-family: 'Space Grotesk', sans-serif;
             font-size: 82px;
             font-weight: 700;
             color: white;
-            position: relative;
-            text-shadow: 0 0 30px rgba(255,255,255,0.3);
-            animation: spotlightEffect 8s ease-in-out infinite;
+            margin-bottom: 20px;
+            text-shadow: 
+                0 0 30px rgba(255,255,255,0.3),
+                0 0 60px rgba(59,130,246,0.3);
+            animation: titleGlow 4s ease-in-out infinite;
         }
 
-        @keyframes spotlightEffect {
+        @keyframes titleGlow {
             0%, 100% {
                 text-shadow: 
                     0 0 30px rgba(255,255,255,0.3),
@@ -80,12 +112,12 @@
             }
         }
 
-        /* Professional Services Section */
+        /* Enhanced Service Cards */
         .services {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin: 50px auto;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px auto;
             max-width: 1200px;
             padding: 0 20px;
         }
@@ -93,27 +125,49 @@
         .service-card {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 10px;
+            padding: 25px;
+            border-radius: 15px;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(255, 255, 255, 0.1),
+                transparent
+            );
+            transform: translateX(-100%);
+            transition: 0.5s;
         }
 
         .service-card:hover {
             transform: translateY(-5px);
             background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
         }
 
-        .service-icon {
-            font-size: 24px;
+        .service-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .service-emoji {
+            font-size: 40px;
             margin-bottom: 15px;
-            color: var(--light-blue);
         }
 
         .service-title {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 600;
             margin-bottom: 10px;
             color: white;
@@ -121,201 +175,187 @@
 
         .service-description {
             font-size: 16px;
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.9);
             line-height: 1.6;
         }
 
-        /* Professional Navigation */
+        /* Navigation */
         .nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             padding: 20px;
-            background: rgba(15, 23, 42, 0.9);
+            background: rgba(37, 99, 235, 0.1);
             backdrop-filter: blur(10px);
             z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Refined Button Style */
+        .nav-logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* Enhanced Buttons */
         .button {
             display: inline-block;
-            padding: 15px 30px;
-            margin: 10px;
-            border-radius: 5px;
+            padding: 12px 30px;
+            border-radius: 25px;
             font-weight: 500;
-            font-size: 16px;
             text-decoration: none;
             color: white;
-            background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+            background: linear-gradient(45deg, var(--primary-blue), var(--secondary-blue));
             transition: all 0.3s ease;
             border: none;
-            cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
 
         .button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
         }
 
-        .button.outline {
-            background: transparent;
-            border: 2px solid white;
+        .button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            transform: rotate(45deg);
+            transition: 0.5s;
+            transform: rotate(45deg) translateX(-100%);
         }
 
-        /* Section Content */
+        .button:hover::after {
+            transform: rotate(45deg) translateX(100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .tagline {
+            font-size: 24px;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Section Styles */
         .section {
             padding: 80px 20px;
-            background: #fff;
-            color: var(--text-dark);
-        }
-
-        .section-dark {
-            background: var(--text-dark);
-            color: var(--text-light);
+            background: #1e293b;
         }
 
         .section-content {
             max-width: 1200px;
             margin: 0 auto;
         }
-
-        .section-title {
-            font-size: 36px;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        /* Mission Section */
-        #mission {
-            background: linear-gradient(to right, #1e3a8a, #1e40af);
-            color: white;
-            padding: 100px 20px;
-        }
-
-        .mission-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .mission-title {
-            font-size: 32px;
-            margin-bottom: 20px;
-        }
-
-        .mission-text {
-            font-size: 18px;
-            line-height: 1.8;
-            margin-bottom: 30px;
-        }
-
-        /* Statistics Section */
-        .stats-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .stat-card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 25px;
-            border-radius: 10px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .stat-number {
-            font-size: 36px;
-            font-weight: 700;
-            color: var(--light-blue);
-            margin-bottom: 10px;
-        }
-
-        .stat-label {
-            font-size: 16px;
-            color: rgba(255, 255, 255, 0.9);
-        }
     </style>
 </head>
 <body>
     <nav class="nav">
-        <a href="#" class="logo">MUSLINK</a>
-        <div>
-            <a href="#mission" class="button outline">Our Mission</a>
-            <a href="#services" class="button">Services</a>
+        <a href="#" class="nav-logo">MUSLINK</a>
+        <div class="nav-links">
+            <a href="#services" class="button">Our Services</a>
+            <a href="#about" class="button">About Us</a>
+            <a href="#contact" class="button">Contact</a>
         </div>
     </nav>
 
     <div class="hero">
+        <div class="floating-elements" id="floatingElements"></div>
         <div class="hero-content">
-            <div class="title-container">
-                <h1>MUSLINK</h1>
-            </div>
+            <h1>MUSLINK</h1>
             <p class="tagline">Connecting Global Fashion with Bangladesh's Finest</p>
 
-            <div class="services" id="services">
-                <div class="service-card" onclick="location.href='#apparel'">
-                    <div class="service-icon"><i class="fas fa-tshirt"></i></div>
+            <div class="services">
+                <div class="service-card">
+                    <div class="service-emoji">👕</div>
                     <h3 class="service-title">Apparel Solutions</h3>
-                    <p class="service-description">Connect with leading manufacturers for quality apparel production at competitive prices.</p>
+                    <p class="service-description">Premium quality apparel manufacturing with global standard compliance.</p>
                 </div>
 
-                <div class="service-card" onclick="location.href='#textiles'">
-                    <div class="service-icon"><i class="fas fa-scroll"></i></div>
+                <div class="service-card">
+                    <div class="service-emoji">🧵</div>
                     <h3 class="service-title">Textile Sourcing</h3>
-                    <p class="service-description">Access premium textile materials from verified suppliers across Bangladesh.</p>
+                    <p class="service-description">Direct access to Bangladesh's finest textile materials and suppliers.</p>
                 </div>
 
-                <div class="service-card" onclick="location.href='#manufacturing'">
-                    <div class="service-icon"><i class="fas fa-industry"></i></div>
-                    <h3 class="service-title">Manufacturing</h3>
-                    <p class="service-description">State-of-the-art manufacturing facilities with skilled workforce and modern technology.</p>
+                <div class="service-card">
+                    <div class="service-emoji">👗</div>
+                    <h3 class="service-title">Fashion Design</h3>
+                    <p class="service-description">Innovative design solutions and trend forecasting services.</p>
                 </div>
 
-                <div class="service-card" onclick="location.href='#global-trade'">
-                    <div class="service-icon"><i class="fas fa-globe"></i></div>
+                <div class="service-card">
+                    <div class="service-emoji">🌏</div>
                     <h3 class="service-title">Global Trade</h3>
-                    <p class="service-description">Streamlined international trade solutions with reliable logistics support.</p>
-                </div>
-            </div>
-
-            <div class="stats-container">
-                <div class="stat-card">
-                    <div class="stat-number">5000+</div>
-                    <div class="stat-label">Global Buyers</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">1000+</div>
-                    <div class="stat-label">Verified Suppliers</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">10K+</div>
-                    <div class="stat-label">Products Listed</div>
+                    <p class="service-description">Seamless international trade and logistics support.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <section id="mission" class="section">
-        <div class="mission-content">
-            <h2 class="mission-title">Our Mission</h2>
-            <p class="mission-text">
-                MUSLINK is dedicated to revolutionizing the textile industry by creating seamless connections between global buyers and Bangladesh's premier manufacturers. We strive to promote sustainable practices, ensure quality standards, and facilitate efficient trade relationships that benefit all stakeholders.
-            </p>
-            <a href="#contact" class="button">Join Our Network</a>
-        </div>
-    </section>
-
-    <!-- Additional sections can be added here -->
-
     <script>
-        // Smooth scroll for navigation
+        // Floating Elements Animation
+        const floatingElements = document.getElementById('floatingElements');
+        const emojis = ['👕', '👗', '🧵', '👔', '👚', '🎽', '🧥', '👘'];
+        
+        function createFloatingElement() {
+            const element = document.createElement('div');
+            element.className = 'floating-element';
+            element.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            element.style.left = `${Math.random() * 100}%`;
+            element.style.animationDuration = `${15 + Math.random() * 10}s`;
+            floatingElements.appendChild(element);
+            
+            // Remove element after animation
+            setTimeout(() => {
+                element.remove();
+            }, 25000);
+        }
+
+        // Create initial elements
+        for (let i = 0; i < 10; i++) {
+            setTimeout(() => {
+                createFloatingElement();
+            }, i * 2000);
+        }
+
+        // Continue creating elements
+        setInterval(createFloatingElement, 3000);
+
+        // Initialize tilt effect
+        VanillaTilt.init(document.querySelectorAll(".service-card"), {
+            max: 10,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.3
+        });
+
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -323,14 +363,6 @@
                     behavior: 'smooth'
                 });
             });
-        });
-
-        // Initialize tilt effect on service cards
-        VanillaTilt.init(document.querySelectorAll(".service-card"), {
-            max: 5,
-            speed: 400,
-            glare: true,
-            "max-glare": 0.2
         });
     </script>
 </body>
