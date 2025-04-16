@@ -3,628 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MUSLINK - Global Textile Innovation</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <title>MUSLINK</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-blue: #0066cc;
-            --secondary-blue: #0099ff;
-            --accent-blue: #33ccff;
-            --light-blue: #e6f3ff;
-            --dark-blue: #003366;
-            --text-light: #f3f4f6;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Outfit', sans-serif;
-            scroll-behavior: smooth;
         }
 
-        body {
-            background: #0f172a;
-            color: var(--text-light);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        /* Navigation with More Height */
+        /* Simple Navigation */
         .nav {
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(15, 23, 42, 0.9);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(125, 211, 252, 0.1);
-            padding: 30px 20px; /* Increased padding */
-            height: 120px; /* Fixed height */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            width: 100%;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            text-align: center;
+            z-index: 100;
         }
 
-        .nav-logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: white;
-            text-decoration: none;
-            margin-bottom: 15px; /* Increased spacing */
-        }
-
-        .nav-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        /* Enhanced Buttons */
-        .button {
-            display: inline-block;
-            padding: 12px 30px;
-            border-radius: 25px;
-            font-weight: 500;
-            text-decoration: none;
-            color: white;
-            background: linear-gradient(45deg, var(--primary-blue), var(--secondary-blue));
-            transition: all 0.3s ease;
-            border: none;
-            position: relative;
-            overflow: hidden;
-            margin: 10px;
-            white-space: nowrap;
-        }
-
-        .button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
-        }
-
-        .button::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                transparent,
-                rgba(255, 255, 255, 0.2),
-                transparent
-            );
-            transform: rotate(45deg) translateX(-100%);
-            transition: 0.5s;
-        }
-
-        .button:hover::after {
-            transform: rotate(45deg) translateX(100%);
-        }
-
-        /* Hero Section with Much More Space */
+        /* Simple Hero Section */
         .hero {
             min-height: 100vh;
-            padding-top: 200px; /* Significantly increased padding */
-            position: relative;
-            background: linear-gradient(
-                135deg,
-                var(--deep-black) 0%,
-                var(--rich-black) 25%,
-                var(--medium-blue) 50%,
-                var(--bright-blue) 75%,
-                var(--light-blue) 85%,
-                var(--deep-black) 100%
-            );
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            padding-top: 100px; /* This should fix the overlap */
+            background: linear-gradient(45deg, #000000, #0066cc);
             display: flex;
-            flex-direction: column;
             align-items: center;
-        }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Centered Hero Content */
-        .hero-content {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+            justify-content: center;
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 25px; /* Consistent spacing between elements */
         }
 
-        /* Main Title with More Space */
+        /* Main Title */
         .main-title {
             font-family: 'Space Grotesk', sans-serif;
             font-size: 82px;
-            font-weight: 700;
-            margin: 0 0 30px 0;
-            background: linear-gradient(135deg, #fff, var(--light-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px rgba(125, 211, 252, 0.3);
-            line-height: 1.2;
+            color: white;
+            margin-bottom: 20px;
         }
 
-        /* Centered Taglines */
+        /* Tagline */
         .tagline {
-            font-size: 28px; /* Increased size */
-            margin: 0 auto 15px;
-            max-width: 800px;
-            color: rgba(255, 255, 255, 0.9);
-            line-height: 1.4;
-        }
-
-        .sub-tagline {
-            font-size: 20px; /* Increased size */
-            margin: 0 auto 40px;
-            max-width: 600px;
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.4;
-        }
-
-        /* Floating Icons Layer */
-        .floating-icons {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        /* Main Content Section */
-        .main-section {
-            padding: 100px 0; /* Increased padding */
-            margin-top: 50px;
-        }
-
-        /* Ensure proper spacing for all sections */
-        .section {
-            padding: 120px 0; /* Increased section padding */
-            margin: 0;
-            position: relative;
-        }
-
-        .section-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 30px; /* Increased horizontal padding */
-        }
-
-        .section-title {
-            font-size: 36px;
-            margin-bottom: 30px;
-            text-align: center;
+            font-size: 24px;
             color: white;
-        }
-
-        /* Mission Section */
-        #mission {
-            background: linear-gradient(135deg, var(--dark-blue), var(--primary-blue));
-        }
-
-        .mission-content {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .mission-text {
-            font-size: 18px;
-            line-height: 1.8;
-            margin-bottom: 30px;
-        }
-
-        /* Service Section Container */
-        .services-section {
-            padding: 100px 20px;
-            background: linear-gradient(135deg, var(--deep-black), var(--rich-black));
-        }
-
-        /* Updated Services Grid */
-        .services-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 60px; /* Increased gap between circles */
-            max-width: 1400px; /* Increased max-width for more space */
-            margin: 50px auto;
-            padding: 20px;
-        }
-
-        /* Larger Service Cards */
-        .service-card {
-            width: 350px; /* Increased from 280px */
-            height: 350px; /* Increased from 280px */
-            border-radius: 50%;
-            background: rgba(125, 211, 252, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(125, 211, 252, 0.1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 40px; /* Increased padding */
-            text-align: center;
-            transition: all 0.4s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            background: rgba(125, 211, 252, 0.1);
-            border-color: rgba(125, 211, 252, 0.2);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Service Card Content Styling */
-        .service-emoji {
-            font-size: 56px; /* Larger emoji */
             margin-bottom: 20px;
-        }
-
-        .service-title {
-            font-size: 24px; /* Larger title */
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: white;
-        }
-
-        .service-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .service-list li {
-            font-size: 16px; /* Larger text */
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 8px;
-            line-height: 1.4;
-        }
-
-        .service-list li::before {
-            content: '•';
-            color: var(--bright-blue);
-            margin-right: 8px;
-        }
-
-        /* Responsive Adjustments */
-        @media (max-width: 1200px) {
-            .services-grid {
-                gap: 40px; /* Slightly reduced gap on smaller screens */
-            }
-        }
-
-        @media (max-width: 768px) {
-            .service-card {
-                width: 300px; /* Slightly smaller on mobile */
-                height: 300px;
-                padding: 30px;
-            }
-
-            .service-emoji {
-                font-size: 48px;
-            }
-
-            .service-title {
-                font-size: 20px;
-            }
-
-            .service-list li {
-                font-size: 14px;
-            }
-        }
-
-        /* Statistics Section */
-        .stats-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin: 50px auto;
-            max-width: 1200px;
-            padding: 0 20px;
-        }
-
-        .stat-card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 25px;
-            border-radius: 10px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .stat-number {
-            font-size: 36px;
-            font-weight: 700;
-            color: var(--light-blue);
-            margin-bottom: 10px;
-        }
-
-        /* Contact Section */
-        #contact {
-            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 40px;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: white;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--accent-blue);
         }
     </style>
 </head>
 <body>
     <nav class="nav">
-        <a href="#" class="nav-logo">MUSLINK</a>
-        <div class="nav-links">
-            <a href="#mission" class="button">Our Mission</a>
-            <a href="#services" class="button">Services</a>
-            <a href="#about" class="button">About</a>
-            <a href="#contact" class="button">Contact</a>
-        </div>
+        Navigation
     </nav>
 
     <div class="hero">
-        <div class="floating-icons" id="floatingIcons"></div>
-        <div class="hero-content">
+        <div>
             <h1 class="main-title">MUSLINK</h1>
-            <p class="tagline">Connecting Global Fashion with Bangladesh's Finest</p>
-            <p class="sub-tagline">Your Premier B2B Platform for Textile Manufacturing and Trade</p>
-
-            <div class="stats-container" data-aos="fade-up" data-aos-delay="200">
-                <div class="stat-card">
-                    <div class="stat-number" id="buyerCount">5000+</div>
-                    <div class="stat-label">Global Buyers</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" id="supplierCount">1000+</div>
-                    <div class="stat-label">Verified Suppliers</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" id="productCount">10K+</div>
-                    <div class="stat-label">Products Listed</div>
-                </div>
-            </div>
+            <p class="tagline">Your B2B Platform</p>
         </div>
     </div>
-
-    <section id="mission" class="section">
-        <div class="section-content">
-            <h2 class="section-title" data-aos="fade-down">Our Mission</h2>
-            <div class="mission-content" data-aos="fade-up">
-                <p class="mission-text">
-                    MUSLINK is dedicated to revolutionizing the textile industry by creating seamless connections between global buyers and Bangladesh's premier manufacturers. We strive to promote sustainable practices, ensure quality standards, and facilitate efficient trade relationships that benefit all stakeholders.
-                </p>
-                <a href="#contact" class="button">Join Our Network</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="services" class="services-section">
-        <div class="section-content">
-            <h2 class="section-title" data-aos="fade-down">Our Services</h2>
-            <div class="services-grid">
-                <div class="service-card" data-aos="fade-up">
-                    <div class="service-emoji">👕</div>
-                    <h3 class="service-title">Apparel Solutions</h3>
-                    <ul class="service-list">
-                        <li>Premium Manufacturing</li>
-                        <li>Global Compliance</li>
-                        <li>Direct Factory Access</li>
-                        <li>Custom Solutions</li>
-                    </ul>
-                </div>
-
-                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-emoji">🧵</div>
-                    <h3 class="service-title">Textile Sourcing</h3>
-                    <ul class="service-list">
-                        <li>Verified Suppliers</li>
-                        <li>Quality Materials</li>
-                        <li>Competitive Pricing</li>
-                        <li>Fast Sourcing</li>
-                    </ul>
-                </div>
-
-                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-emoji">👗</div>
-                    <h3 class="service-title">Fashion Design</h3>
-                    <ul class="service-list">
-                        <li>Trend Forecasting</li>
-                        <li>Design Collaboration</li>
-                        <li>Pattern Development</li>
-                        <li>Sample Creation</li>
-                    </ul>
-                </div>
-
-                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="service-emoji">🌏</div>
-                    <h3 class="service-title">Global Trade</h3>
-                    <ul class="service-list">
-                        <li>Logistics Support</li>
-                        <li>Customs Clearance</li>
-                        <li>Documentation</li>
-                        <li>Trade Compliance</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="section">
-        <div class="section-content">
-            <h2 class="section-title" data-aos="fade-down">About Us</h2>
-            <div class="about-content" data-aos="fade-up">
-                <p class="about-text">
-                    Founded with a vision to bridge the gap between global fashion demands and Bangladesh's manufacturing capabilities, MUSLINK has emerged as a leading B2B platform in the textile industry. Our platform facilitates seamless connections between international buyers and local manufacturers, ensuring quality, reliability, and sustainable business practices.
-                </p>
-                <div class="about-features" data-aos="fade-up" data-aos-delay="200">
-                    <div class="feature">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Quality Assurance</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-shield-alt"></i>
-                        <span>Verified Suppliers</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-globe"></i>
-                        <span>Global Network</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="section">
-        <div class="section-content">
-            <h2 class="section-title" data-aos="fade-down">Contact Us</h2>
-            <div class="contact-form" data-aos="fade-up">
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="button">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 1000,
-            once: true
-        });
-
-        // Monochrome SVG icons for floating background
-        const svgIcons = [
-            `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4.5c-4.5 0-8.5 3-9.7 7.5 1.2 4.5 5.2 7.5 9.7 7.5s8.5-3 9.7-7.5c-1.2-4.5-5.2-7.5-9.7-7.5zm0 12.5c-2.8 0-5-2.2-5-5s2.2-5 5-5 5 2.2 5 5-2.2 5-5 5z"/></svg>`,
-            `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M21 7L9 19l-5.5-5.5 1.41-1.41L9 16.17 19.59 5.59 21 7z"/></svg>`,
-            `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/></svg>`
-        ];
-
-        function createFloatingIcon() {
-            const icon = document.createElement('div');
-            icon.className = 'floating-icon';
-            icon.innerHTML = svgIcons[Math.floor(Math.random() * svgIcons.length)];
-            icon.style.left = `${Math.random() * 100}%`;
-            icon.style.animationDuration = `${20 + Math.random() * 10}s`;
-            document.getElementById('floatingIcons').appendChild(icon);
-            
-            setTimeout(() => {
-                icon.remove();
-            }, 30000);
-        }
-
-        // Create initial icons
-        for (let i = 0; i < 8; i++) {
-            setTimeout(() => {
-                createFloatingIcon();
-            }, i * 3000);
-        }
-
-        // Continue creating icons
-        setInterval(createFloatingIcon, 4000);
-
-        // Initialize tilt effect
-        VanillaTilt.init(document.querySelectorAll(".service-card"), {
-            max: 10,
-            speed: 400,
-            glare: true,
-            "max-glare": 0.3
-        });
-
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Contact Form Handler
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Add your form submission logic here
-            alert('Thank you for your message! We will get back to you soon.');
-            this.reset();
-        });
-
-        // Intersection Observer for animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-
-        document.querySelectorAll('.service-card, .stat-card').forEach((el) => {
-            observer.observe(el);
-        });
-    </script>
 </body>
 </html> 
