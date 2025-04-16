@@ -11,11 +11,11 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <style>
         :root {
-            --primary-blue: #2563eb;
-            --secondary-blue: #3b82f6;
-            --accent-blue: #60a5fa;
-            --light-blue: #93c5fd;
-            --dark-blue: #1e3a8a;
+            --primary-blue: #0066cc;
+            --secondary-blue: #0099ff;
+            --accent-blue: #33ccff;
+            --light-blue: #e6f3ff;
+            --dark-blue: #003366;
             --text-light: #f3f4f6;
         }
 
@@ -34,19 +34,22 @@
             line-height: 1.6;
         }
 
-        /* Enhanced Hero Section */
+        /* Centered Hero Section */
         .hero {
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
             position: relative;
-            overflow: hidden;
-            padding-top: 80px;
             background: linear-gradient(-45deg, 
-                #60a5fa,
-                #3b82f6,
                 #2563eb,
+                #3b82f6,
+                #60a5fa,
                 #4f46e5);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
+            overflow: hidden;
         }
 
         @keyframes gradientBG {
@@ -55,9 +58,9 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Floating Background Elements */
-        .floating-elements {
-            position: fixed;
+        /* Monochrome Floating Icons */
+        .floating-icons {
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
@@ -68,53 +71,63 @@
 
         .floating-icon {
             position: absolute;
-            color: rgba(255, 255, 255, 0.1);
-            font-size: 24px;
+            width: 30px;
+            height: 30px;
             opacity: 0;
             animation: float 20s linear infinite;
+            filter: brightness(0) invert(1);
+            opacity: 0.05;
         }
 
         @keyframes float {
             0% {
-                transform: translateY(100vh) translateX(-50%);
+                transform: translateY(100vh) translateX(-50px) rotate(0deg);
                 opacity: 0;
             }
             10% {
-                opacity: 0.3;
+                opacity: 0.05;
             }
             90% {
-                opacity: 0.3;
+                opacity: 0.05;
             }
             100% {
-                transform: translateY(-100px) translateX(50%);
+                transform: translateY(-100px) translateX(50px) rotate(360deg);
                 opacity: 0;
             }
         }
 
-        /* Professional Title with Subtle Glow */
-        h1 {
+        /* Centered Content */
+        .hero-content {
+            text-align: center;
+            padding-top: 120px;
+            z-index: 2;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .main-title {
             font-family: 'Space Grotesk', sans-serif;
             font-size: 82px;
             font-weight: 700;
-            color: white;
             margin-bottom: 20px;
-            text-shadow: 
-                0 0 30px rgba(255,255,255,0.3),
-                0 0 60px rgba(59,130,246,0.3);
-            animation: titleGlow 4s ease-in-out infinite;
+            text-align: center;
+            color: white;
+            text-shadow: 0 0 30px rgba(255,255,255,0.3);
         }
 
-        @keyframes titleGlow {
-            0%, 100% {
-                text-shadow: 
-                    0 0 30px rgba(255,255,255,0.3),
-                    0 0 60px rgba(59,130,246,0.3);
-            }
-            50% {
-                text-shadow: 
-                    0 0 40px rgba(255,255,255,0.4),
-                    0 0 80px rgba(59,130,246,0.4);
-            }
+        .tagline {
+            font-size: 24px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .sub-tagline {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 60px;
+            max-width: 600px;
+            text-align: center;
         }
 
         /* Navigation */
@@ -128,26 +141,23 @@
             backdrop-filter: blur(10px);
             z-index: 1000;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            gap: 15px;
         }
 
         .nav-logo {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: 700;
             color: white;
             text-decoration: none;
-            transition: text-shadow 0.3s ease;
-        }
-
-        .nav-logo:hover {
-            text-shadow: 0 0 20px rgba(255,255,255,0.5);
         }
 
         .nav-links {
             display: flex;
             gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         /* Enhanced Buttons */
@@ -163,6 +173,8 @@
             border: none;
             position: relative;
             overflow: hidden;
+            margin: 10px;
+            white-space: nowrap;
         }
 
         .button:hover {
@@ -179,12 +191,11 @@
             height: 200%;
             background: linear-gradient(
                 transparent,
-                rgba(255, 255, 255, 0.3),
+                rgba(255, 255, 255, 0.2),
                 transparent
             );
-            transform: rotate(45deg);
-            transition: 0.5s;
             transform: rotate(45deg) translateX(-100%);
+            transition: 0.5s;
         }
 
         .button:hover::after {
@@ -195,6 +206,7 @@
         .section {
             padding: 100px 20px;
             position: relative;
+            overflow: hidden;
         }
 
         .section-content {
@@ -202,6 +214,7 @@
             margin: 0 auto;
             position: relative;
             z-index: 2;
+            padding: 0 20px;
         }
 
         .section-title {
@@ -230,31 +243,71 @@
 
         /* Services Section */
         .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin: 50px auto;
+            max-width: 1200px;
+            padding: 0 20px;
         }
 
         .service-card {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             padding: 30px;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
             transition: all 0.4s ease;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
 
         .service-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
             background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         .service-emoji {
-            font-size: 40px;
-            margin-bottom: 20px;
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .service-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .service-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        .service-list li {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .service-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
         }
 
         /* Statistics Section */
@@ -262,7 +315,9 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 30px;
-            margin-top: 50px;
+            margin: 50px auto;
+            max-width: 1200px;
+            padding: 0 20px;
         }
 
         .stat-card {
@@ -332,11 +387,12 @@
         </div>
     </nav>
 
-    <div class="hero" id="home">
-        <div class="floating-elements" id="floatingElements"></div>
+    <div class="hero">
+        <div id="floatingIcons" class="floating-icons"></div>
         <div class="hero-content">
-            <h1 data-aos="fade-down">MUSLINK</h1>
-            <p class="tagline" data-aos="fade-up">Connecting Global Fashion with Bangladesh's Finest</p>
+            <h1 class="main-title">MUSLINK</h1>
+            <p class="tagline">Connecting Global Fashion with Bangladesh's Finest</p>
+            <p class="sub-tagline">Your Premier B2B Platform for Textile Manufacturing and Trade</p>
 
             <div class="stats-container" data-aos="fade-up" data-aos-delay="200">
                 <div class="stat-card">
@@ -371,28 +427,48 @@
         <div class="section-content">
             <h2 class="section-title" data-aos="fade-down">Our Services</h2>
             <div class="services-grid">
-                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-card" data-aos="fade-up">
                     <div class="service-emoji">👕</div>
                     <h3 class="service-title">Apparel Solutions</h3>
-                    <p class="service-description">Premium quality apparel manufacturing with global standard compliance. Direct access to leading manufacturers in Bangladesh.</p>
+                    <ul class="service-list">
+                        <li>Premium Quality Manufacturing</li>
+                        <li>Global Standard Compliance</li>
+                        <li>Direct Factory Access</li>
+                        <li>Custom Production Solutions</li>
+                    </ul>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-emoji">🧵</div>
+                    <h3 class="service-title">Textile Sourcing</h3>
+                    <ul class="service-list">
+                        <li>Verified Suppliers Network</li>
+                        <li>Quality Assured Materials</li>
+                        <li>Competitive Pricing</li>
+                        <li>Streamlined Sourcing</li>
+                    </ul>
                 </div>
 
                 <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-emoji">🧵</div>
-                    <h3 class="service-title">Textile Sourcing</h3>
-                    <p class="service-description">Connect with verified suppliers for high-quality textiles. Streamlined sourcing process with quality assurance.</p>
+                    <div class="service-emoji">👗</div>
+                    <h3 class="service-title">Fashion Design</h3>
+                    <ul class="service-list">
+                        <li>Trend Forecasting</li>
+                        <li>Design Collaboration</li>
+                        <li>Pattern Development</li>
+                        <li>Sample Creation</li>
+                    </ul>
                 </div>
 
                 <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="service-emoji">👗</div>
-                    <h3 class="service-title">Fashion Design</h3>
-                    <p class="service-description">Innovative design solutions and trend forecasting. Collaborate with experienced designers for your collections.</p>
-                </div>
-
-                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
                     <div class="service-emoji">🌏</div>
                     <h3 class="service-title">Global Trade</h3>
-                    <p class="service-description">End-to-end trade solutions including logistics, customs clearance, and documentation support.</p>
+                    <ul class="service-list">
+                        <li>Logistics Management</li>
+                        <li>Customs Clearance</li>
+                        <li>Documentation Support</li>
+                        <li>Trade Compliance</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -453,31 +529,35 @@
             once: true
         });
 
-        // Floating Background Elements
-        const floatingElements = document.getElementById('floatingElements');
-        const icons = ['tshirt', 'scissors', 'ruler', 'tag', 'box'];
-        
-        function createFloatingElement() {
-            const element = document.createElement('i');
-            element.className = `fas fa-${icons[Math.floor(Math.random() * icons.length)]} floating-icon`;
-            element.style.left = `${Math.random() * 100}%`;
-            element.style.animationDuration = `${15 + Math.random() * 10}s`;
-            floatingElements.appendChild(element);
+        // Monochrome SVG icons for floating background
+        const svgIcons = [
+            `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4.5c-4.5 0-8.5 3-9.7 7.5 1.2 4.5 5.2 7.5 9.7 7.5s8.5-3 9.7-7.5c-1.2-4.5-5.2-7.5-9.7-7.5zm0 12.5c-2.8 0-5-2.2-5-5s2.2-5 5-5 5 2.2 5 5-2.2 5-5 5z"/></svg>`,
+            `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M21 7L9 19l-5.5-5.5 1.41-1.41L9 16.17 19.59 5.59 21 7z"/></svg>`,
+            `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/></svg>`
+        ];
+
+        function createFloatingIcon() {
+            const icon = document.createElement('div');
+            icon.className = 'floating-icon';
+            icon.innerHTML = svgIcons[Math.floor(Math.random() * svgIcons.length)];
+            icon.style.left = `${Math.random() * 100}%`;
+            icon.style.animationDuration = `${20 + Math.random() * 10}s`;
+            document.getElementById('floatingIcons').appendChild(icon);
             
             setTimeout(() => {
-                element.remove();
-            }, 25000);
+                icon.remove();
+            }, 30000);
         }
 
-        // Create initial elements
-        for (let i = 0; i < 10; i++) {
+        // Create initial icons
+        for (let i = 0; i < 8; i++) {
             setTimeout(() => {
-                createFloatingElement();
-            }, i * 2000);
+                createFloatingIcon();
+            }, i * 3000);
         }
 
-        // Continue creating elements
-        setInterval(createFloatingElement, 3000);
+        // Continue creating icons
+        setInterval(createFloatingIcon, 4000);
 
         // Initialize tilt effect
         VanillaTilt.init(document.querySelectorAll(".service-card"), {
